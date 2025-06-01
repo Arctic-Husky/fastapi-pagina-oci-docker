@@ -1,0 +1,17 @@
+services:
+  file-server:
+    build: .
+    networks:
+      containers:
+        ipv4_address: 10.90.0.27
+    environment:
+      - TARGET_DIRECTORY=/files
+    volumes:
+      - /mnt/vol/files:/files
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+networks:
+  containers:
+    external: true
